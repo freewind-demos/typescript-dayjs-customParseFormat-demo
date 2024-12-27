@@ -1,43 +1,34 @@
 import { Descriptions, Divider, Flex, Typography } from 'antd';
-import UtcDemo from './components/UtcDemo';
+import CustomParseFormatDemo from './components/CustomParseFormatDemo';
 
 const { Title, Paragraph } = Typography;
 
 function App() {
     return (
         <Flex vertical gap="small">
-            <Title level={2}>Day.js UTC 插件</Title>
+            <Title level={2}>Day.js customParseFormat 插件</Title>
             <Paragraph>
-                UTC插件提供了在UTC模式下解析、验证、操作和显示日期的功能。
-                它允许你在本地模式和UTC模式之间切换，使跨时区处理日期变得更容易。
+                customParseFormat插件提供了自定义格式解析日期字符串的功能。
+                它允许你使用自定义的格式字符串来解析日期，使日期字符串的解析更加灵活。
             </Paragraph>
             <div>
-                <Paragraph>UTC插件提供的方法：</Paragraph>
-                <Descriptions column={2} bordered>
-                    <Descriptions.Item label="静态方法">
+                <Paragraph>customParseFormat插件的使用方法：</Paragraph>
+                <Descriptions column={1} bordered>
+                    <Descriptions.Item label="基本用法">
                         <Descriptions column={1}>
-                            <Descriptions.Item label="dayjs.utc()">创建当前时间的UTC模式对象</Descriptions.Item>
-                            <Descriptions.Item label="dayjs.utc(anotherDayjs)">将一个已有的 Dayjs 对象转换为 UTC 模式</Descriptions.Item>
-                            <Descriptions.Item label="dayjs.utc(date)">将一个 Date 对象转换为 UTC 模式的 Dayjs 对象</Descriptions.Item>
-                            <Descriptions.Item label="dayjs.utc('2024-01-01')">从字符串解析并创建UTC模式的对象</Descriptions.Item>
-                            <Descriptions.Item label="dayjs.utc(1704067200000)">从时间戳创建UTC模式的对象</Descriptions.Item>
-                            <Descriptions.Item label="dayjs.utc([2024, 0, 1])">从年、月（0-11）、日等数组创建UTC模式的对象</Descriptions.Item>
-                        </Descriptions>
-                    </Descriptions.Item>
-                    <Descriptions.Item label="实例方法">
-                        <Descriptions column={1}>
-                            <Descriptions.Item label="dayjs().utc()">将当前对象转换为UTC模式</Descriptions.Item>
-                            <Descriptions.Item label="dayjs().local()">将UTC模式的对象转换回本地模式</Descriptions.Item>
-                            <Descriptions.Item label="dayjs().isUTC()">检查对象是否处于UTC模式，返回布尔值</Descriptions.Item>
-                            <Descriptions.Item label="dayjs().utcOffset()">获取UTC偏移量（分钟）</Descriptions.Item>
-                            <Descriptions.Item label="dayjs().utcOffset(120)">设置UTC偏移量为+02:00</Descriptions.Item>
-                            <Descriptions.Item label="dayjs().utcOffset(-120)">设置UTC偏移量为-02:00</Descriptions.Item>
+                            <Descriptions.Item label="dayjs('2023-12-31T16:00:00Z', 'YYYY-MM-DDTHH:mm:ssZ')">解析UTC时间格式字符串</Descriptions.Item>
+                            <Descriptions.Item label="dayjs('2024-01-01', 'YYYY-MM-DD')">使用指定格式解析日期字符串</Descriptions.Item>
+                            <Descriptions.Item label="dayjs('01/01/2024', 'DD/MM/YYYY')">使用自定义分隔符的格式</Descriptions.Item>
+                            <Descriptions.Item label="dayjs('2024年01月01日', 'YYYY年MM月DD日')">使用中文格式</Descriptions.Item>
+                            <Descriptions.Item label="dayjs('20240101', 'YYYYMMDD')">解析无分隔符的日期字符串</Descriptions.Item>
+                            <Descriptions.Item label="dayjs('2024-01-01 13:30:45', 'YYYY-MM-DD HH:mm:ss')">解析日期时间字符串</Descriptions.Item>
+                            <Descriptions.Item label="dayjs('01-01-2024 13:30', 'DD-MM-YYYY HH:mm')">自定义日期时间格式</Descriptions.Item>
                         </Descriptions>
                     </Descriptions.Item>
                 </Descriptions>
             </div>
             <Divider />
-            <UtcDemo />
+            <CustomParseFormatDemo />
         </Flex>
     );
 }
